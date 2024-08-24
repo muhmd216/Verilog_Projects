@@ -13,6 +13,7 @@ reg [15:0]  A_TB ;
 reg [15:0]  B_TB ;
 reg [3:0]   ALU_FUN_TB ;  // Testbench signal for ALU function selector
 reg         clk_TB;
+reg         rst_TB;
 wire [15:0] ALU_OUT_TB;   // Testbench wire to monitor ALU output
 wire        Arith_Flag_TB;
 wire        Logic_Flag_TB;
@@ -37,8 +38,18 @@ initial begin
     $dumpvars ;
 
      // Initialize the clock signal
-    clk_TB = 1'b0;
-    
+    clk_TB = 1'b0  ;
+    rst_TB = 1'b1  ;
+    A_TB   = 16'd15;
+    B_TB   = 16'd10;
+    ALU_FUN_TB = 4'b0000;
+    #CLK_PERIOD
+
+    rst_TB = 1'b0;  //Activate RST
+    #CLK_PERIOD
+
+    rst_TB = 1'b1;  //DeActivate RST
+   
       $display ("****TEST CASE 1****"); // Test Addition
 
 A_TB = 16'd15;
@@ -170,6 +181,7 @@ ALU DUT3 (
     .B(B_TB),
     .ALU_FUN(ALU_FUN_TB),
     .clk(clk_TB),
+    .rst(rst_TB),
     .ALU_OUT(ALU_OUT_TB),
     .Arith_Flag(Arith_Flag_TB),
     .Logic_Flag(Logic_Flag_TB),
