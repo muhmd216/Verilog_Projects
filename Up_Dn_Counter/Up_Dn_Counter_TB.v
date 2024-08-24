@@ -18,13 +18,13 @@ wire              Low_TB     ;
 parameter CLK_PERIOD = 10 ;    //Parametrize Clock period
 
 //////////////////////////////////////////////////////////
-/////////////////// INSTANCTIATION //////////////////////
+/////////////////// INITIAL BLOCK ///////////////////////
 ////////////////////////////////////////////////////////
 initial begin
    IN_TB   = 5'b00011 ;
    Load_TB = 1'b0 ;
    Down_TB = 1'b0 ;
-   Up_TB   = 1'b0 ;       // intial values
+   Up_TB   = 1'b0 ;       /////// initial values ///////
    CLK_TB  = 1'b0 ;
    RST_TB  = 1'b1 ;
    #CLK_PERIOD
