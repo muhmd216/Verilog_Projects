@@ -1,0 +1,5 @@
+vlib work
+vlog -f sourcefile.txt
+vsim -voptargs=+accs work.LFSR_TB 
+add wave *
+run -all
